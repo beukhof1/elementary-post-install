@@ -3,6 +3,7 @@ clear
 cd /tmp
 
 echo "*** Enable add-apt-repository ***"
+sudo apt update
 sudo apt-get install -y software-properties-common
 echo
 
@@ -11,7 +12,7 @@ echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
 echo "Add AppCenter repository"
 wget -qO - http://packages.elementary.io/key.asc | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packages.elementary.io/appcenter xenial main" >> /etc/apt/sources.list.d/appcenter.list'
+sudo sh -c 'echo "deb [arch=amd64] http://packages.elementary.io/appcenter xenial main" > /etc/apt/sources.list.d/appcenter.list'
 echo "Add repository for elementary Tweaks"
 sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 echo "Add repository for Nvidia driver"
@@ -41,6 +42,8 @@ echo
 echo "*** Install packages ***"
 echo "Install elementary Tweaks"
 sudo apt-get install -y elementary-tweaks
+echo "Install new sound plug"
+sudo apt-get install -y switchboard-plug-sound
 echo "Install Nvidia driver"
 sudo apt-get install -y nvidia-381 nvidia-prime
 sudo apt-get purge -y libcuda1-381
@@ -78,20 +81,16 @@ echo "Install Git"
 sudo apt-get install -y git
 echo "Install Yadm"
 sudo apt-get install -y yadm
-echo "Install Mysql"
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-sudo apt-get install -y mysql-client mysql-server
 echo "Install Adb and Fastboot"
 sudo apt-get install -y adb fastboot
 echo "Install Virtualenv"
 sudo apt-get install -y virtualenv
-echo "Install Preload"
-sudo apt-get install -y preload
 echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
 echo "Install unrar"
 sudo apt-get install -y unrar
+echo "Install gksu"
+sudo apt-get install -y gksu
 echo "Install Eddy"
 sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
 echo "Install Steam"
@@ -166,7 +165,7 @@ sudo sh -c 'echo "Name=Открыть от имени суперпользова
 sudo sh -c 'echo "Icon=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "MimeType=inode;" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "Exec=gksudo pantheon-files %U" >> /usr/share/contractor/folder-openasroot.contract'
-sudo sh -c 'echo "Gettext-Domain=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
+sudo sh -c 'echo "X-GNOME-Gettext-Domain=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 
 yadm clone https://github.com/Djaler/dotfiles.git
 yadm reset --hard origin/master
