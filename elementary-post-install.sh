@@ -42,8 +42,6 @@ echo
 echo "*** Install packages ***"
 echo "Install elementary Tweaks"
 sudo apt-get install -y elementary-tweaks
-echo "Install new sound plug"
-sudo apt-get install -y switchboard-plug-sound
 echo "Install Nvidia driver"
 sudo apt-get install -y nvidia-381 nvidia-prime
 sudo apt-get purge -y libcuda1-381
@@ -128,13 +126,16 @@ echo
 
 echo "*** Uninstall packages ***"
 sudo apt-get purge -y wingpanel-indicator-notifications wingpanel-indicator-bluetooth
-sudo apt-get purge -y switchboard-plug-gcc-wacom switchboard-plug-printers switchboard-plug-sharing switchboard-plug-online-accounts switchboard-plug-parental-controls switchboard-plug-locale switchboard-plug-gcc-color switchboard-plug-bluetooth
+sudo apt-get purge -y switchboard-plug-gcc-wacom switchboard-plug-printers switchboard-plug-sharing switchboard-plug-online-accounts switchboard-plug-parental-controls switchboard-plug-gcc-color switchboard-plug-bluetooth switchboard-plug-display
 sudo apt-get purge -y capnet-assist libscratchcore0 appcenter pantheon-calculator libmaya-calendar0 epiphany-browser-data libnoise-core0 simple-scan audience snap-photobooth evolution-data-server
 sudo apt-get purge -y python3-apport apport-symptoms
 sudo apt-get purge -y language-pack-bg language-pack-bg-base language-pack-gnome-bg language-pack-gnome-bg-base language-pack-ca language-pack-ca-base language-pack-gnome-ca language-pack-gnome-ca-base language-pack-cs language-pack-cs-base language-pack-gnome-cs language-pack-gnome-cs-base language-pack-da language-pack-da-base language-pack-gnome-da language-pack-gnome-da-base language-pack-hu language-pack-hu-base language-pack-gnome-hu language-pack-gnome-hu-base language-pack-id language-pack-id-base language-pack-gnome-id language-pack-gnome-id-base language-pack-ja language-pack-ja-base language-pack-gnome-ja language-pack-gnome-ja-base language-pack-ko language-pack-ko-base language-pack-gnome-ko language-pack-gnome-ko-base language-pack-nb language-pack-nb-base language-pack-gnome-nb language-pack-gnome-nb-base language-pack-nl language-pack-nl-base language-pack-gnome-nl language-pack-gnome-nl-base language-pack-pl language-pack-pl-base language-pack-gnome-pl language-pack-gnome-pl-base language-pack-sv language-pack-sv-base language-pack-gnome-sv language-pack-gnome-sv-base language-pack-th language-pack-th-base language-pack-gnome-th language-pack-gnome-th-base language-pack-tr language-pack-tr-base language-pack-gnome-tr language-pack-gnome-tr-base language-pack-uk language-pack-uk-base language-pack-gnome-uk language-pack-gnome-uk-base language-pack-vi language-pack-vi-base language-pack-gnome-vi language-pack-gnome-vi-base language-pack-zh language-pack-zh-base language-pack-gnome-zh language-pack-gnome-zh-base language-pack-zh-hant language-pack-zh-hant-base language-pack-gnome-zh-hant language-pack-gnome-zh-hant-base
-sudo apt-get purge -y wbulgarian wdanish wdutch wpolish wukrainian wnorwegian wcatalan
+sudo apt-get purge -y wbulgarian wdanish wdutch wpolish wukrainian wnorwegian wcatalan wswedish
+sudo apt-get purge -y hunspell-en-ca hunspell-en-za hunspell-en-au hunspell-en-gb
+sudo apt-get purge -y libreoffice-help-ru libreoffice-help-en-us libreoffice-help-en-gb libreoffice-l10n-en-gb libreoffice-l10n-en-za mythes-en-au
 sudo apt-get purge -y mpv
 sudo apt-get purge -y fonts-noto-cjk
+sudo apt-get purge -y brltty
 sudo apt-get autoremove -y
 echo
 
@@ -200,7 +201,7 @@ ln -s /media/.Trash-1000 ~/.Trash
 
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
 
-sudo sed -i 's/quiet splash//g' /etc/default/grub
+sudo sed -i 's/quiet splash/i915.enable_rc6=0/g' /etc/default/grub
 sudo update-grub
 
 sudo reboot
