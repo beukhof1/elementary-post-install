@@ -83,6 +83,8 @@ echo "Install Adb and Fastboot"
 sudo apt-get install -y adb fastboot
 echo "Install Virtualenv"
 sudo apt-get install -y virtualenv
+echo "Install Python Libraries"
+sudo apt-get install -y python3-dev
 echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
 echo "Install unrar"
