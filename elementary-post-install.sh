@@ -167,7 +167,7 @@ sudo sh -c 'echo "[Contractor Entry]" > /usr/share/contractor/folder-openasroot.
 sudo sh -c 'echo "Name=Открыть от имени суперпользователя" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "Icon=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "MimeType=inode;" >> /usr/share/contractor/folder-openasroot.contract'
-sudo sh -c 'echo "Exec=gksudo pantheon-files %U" >> /usr/share/contractor/folder-openasroot.contract'
+sudo sh -c 'echo "Exec=sh -c \"pkexec pantheon-files %U\"" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "X-GNOME-Gettext-Domain=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 
 yadm clone https://github.com/Djaler/dotfiles.git
