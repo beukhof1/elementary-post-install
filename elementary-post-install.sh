@@ -25,9 +25,6 @@ echo "Add repository for Java ***"
 sudo add-apt-repository -y ppa:webupd8team/java
 echo "Add repository for Sublime Text 3"
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-echo "Add repository for Google Chrome"
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list'
 echo "Add repository for Virtualbox"
 wget -q -O - https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
 sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian/ xenial contrib" >> /etc/apt/sources.list.d/virtualbox.list'
@@ -59,8 +56,8 @@ echo "Install Sublime Text 3"
 sudo apt-get install -y sublime-text-installer
 echo "Install Bleachbit"
 sudo apt-get install -y bleachbit
-echo "Install Google Chrome"
-sudo apt-get install -y google-chrome-stable
+echo "Install Chromium"
+sudo apt-get install -y chromium-browser
 sudo rm /etc/apt/sources.list.d/google.list
 echo "Install Virtualbox"
 sudo apt-get install -y virtualbox-5.1
