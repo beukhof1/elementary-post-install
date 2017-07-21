@@ -10,13 +10,12 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-echo "Add AppCenter repository"
-wget -qO - http://packages.elementary.io/key.asc | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] http://packages.elementary.io/appcenter xenial main" > /etc/apt/sources.list.d/appcenter.list'
 echo "Add repository for elementary Tweaks"
 sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 echo "Add repository for Nvidia driver"
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
+echo "Add repository for Chromium ***"
+sudo add-apt-repository -y ppa:canonical-chromium-builds/stage
 echo "Add repository for Quodlibet"
 sudo add-apt-repository -y ppa:lazka/ppa
 echo "Add repository for Timeshift"
@@ -25,9 +24,6 @@ echo "Add repository for Java ***"
 sudo add-apt-repository -y ppa:webupd8team/java
 echo "Add repository for Sublime Text 3"
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
-echo "Add repository for Virtualbox"
-wget -q -O - https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
-sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian/ xenial contrib" >> /etc/apt/sources.list.d/virtualbox.list'
 echo "Enable partner repository"
 sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 echo
@@ -40,8 +36,7 @@ echo "*** Install packages ***"
 echo "Install elementary Tweaks"
 sudo apt-get install -y elementary-tweaks
 echo "Install Nvidia driver"
-sudo apt-get install -y nvidia-381 nvidia-prime
-sudo apt-get purge -y libcuda1-381
+sudo apt-get install -y nvidia-384 nvidia-prime
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
 echo "Install Libre Office"
@@ -58,9 +53,6 @@ echo "Install Bleachbit"
 sudo apt-get install -y bleachbit
 echo "Install Chromium"
 sudo apt-get install -y chromium-browser
-sudo rm /etc/apt/sources.list.d/google.list
-echo "Install Virtualbox"
-sudo apt-get install -y virtualbox-5.1
 echo "Install Puddletag"
 sudo apt-get install -y puddletag
 echo "Install Deluge"
@@ -86,13 +78,11 @@ echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
 echo "Install unrar"
 sudo apt-get install -y unrar
-echo "Install gksu"
-sudo apt-get install -y gksu
 echo "Install Eddy"
 sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
 echo "Install Steam"
 sudo debconf-set-selections <<< 'steam steam/question select "I AGREE"'
-wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb 
+wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
 sudo apt install -y ./steam.deb
 echo "Install bomi"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AABCPTkQBglJ3k7ryURWCsCBa/bomi.deb?raw=1 -O bomi.deb
@@ -184,7 +174,6 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle','terminate:ctrl_alt_bksp']"
 
-
 sudo sh -c 'echo "/dev/sdb1			/media					btrfs	defaults		0	0" >> /etc/fstab'
 sudo sh -c 'echo "tmpfs				/tmp					tmpfs	rw,nosuid,nodev		0	0" >> /etc/fstab'
 
@@ -200,7 +189,6 @@ ln -s /media/.Trash-1000 ~/.Trash
 
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
 
-sudo sed -i 's/quiet splash/i915.enable_rc6=0/g' /etc/default/grub
 sudo update-grub
 
 sudo reboot
