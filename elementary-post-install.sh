@@ -35,6 +35,8 @@ echo
 echo "*** Install packages ***"
 echo "Install elementary Tweaks"
 sudo apt-get install -y elementary-tweaks
+echo "Install elementary new Sound Plug"
+sudo apt-get install -y switchboard-plug-sound
 echo "Install Nvidia driver"
 sudo apt-get install -y nvidia-384 nvidia-prime
 echo "Install Quodlibet"
@@ -70,6 +72,10 @@ echo "Install Yadm"
 sudo apt-get install -y yadm
 echo "Install Adb and Fastboot"
 sudo apt-get install -y adb fastboot
+echo "Install Mysql"
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+sudo apt-get install -y mysql-server
 echo "Install Virtualenv"
 sudo apt-get install -y virtualenv
 echo "Install Python Libraries"
@@ -78,6 +84,8 @@ echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
 echo "Install unrar"
 sudo apt-get install -y unrar
+echo "Install Gksu"
+sudo apt-get install -y gksu
 echo "Install Eddy"
 sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
 echo "Install Steam"
@@ -130,6 +138,7 @@ echo
 
 echo "*** Upgrade packages ***"
 sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
 echo
 
 git clone https://github.com/png2378/telegram-icon-updater.git
@@ -147,6 +156,7 @@ rm -rf ~/Music
 rm -rf ~/Videos
 rm -rf ~/.config/epiphany
 rm -rf ~/.local/share/scratch-text-editor
+rm -rf ~/.local/share/epiphany
 
 sudo rm /usr/share/contractor/print.contract
 sudo rm /usr/share/contractor/gnome-bluetooth.contract
@@ -174,21 +184,25 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle','terminate:ctrl_alt_bksp']"
 
-sudo sh -c 'echo "/dev/sdb1			/media					btrfs	defaults		0	0" >> /etc/fstab'
+sudo sh -c 'echo "steam" >> /etc/wingpanel.d/ayatana.blacklist'
+
+sudo sh -c 'echo "/dev/sdb1			/media					ext4	defaults		0	0" >> /etc/fstab'
 sudo sh -c 'echo "tmpfs				/tmp					tmpfs	rw,nosuid,nodev		0	0" >> /etc/fstab'
 
 ln -s /media/Dropbox ~/Dropbox
 ln -s /media/Downloads ~/Downloads
 ln -s /media/Videos ~/Videos
-ln -s ~/Dropbox/Music ~/Music
-ln -s ~/Dropbox/Stuff ~/Stuff
-ln -s ~/Dropbox/Projects ~/Projects
-ln -s /media/Steam ~/.local/share/Steam
+ln -s /media/Dropbox/Music ~/Music
+ln -s /media/Dropbox/Stuff ~/Stuff
 ln -s /media/.dropbox ~/.dropbox
 ln -s /media/.Trash-1000 ~/.Trash
 
+sudo chown djaler:djaler -R /media
+sudo chown djaler:djaler -R /opt
+
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
 
+sudo sed -i 's/quiet splash//g' /etc/default/grub
 sudo update-grub
 
 sudo reboot
