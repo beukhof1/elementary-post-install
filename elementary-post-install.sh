@@ -88,10 +88,6 @@ echo "Install Gksu"
 sudo apt-get install -y gksu
 echo "Install Eddy"
 sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
-echo "Install Steam"
-sudo debconf-set-selections <<< 'steam steam/question select "I AGREE"'
-wget https://steamcdn-a.akamaihd.net/client/installer/steam.deb
-sudo apt install -y ./steam.deb
 echo "Install bomi"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AABCPTkQBglJ3k7ryURWCsCBa/bomi.deb?raw=1 -O bomi.deb
 sudo apt install -y ./bomi.deb --no-install-recommends
@@ -110,9 +106,6 @@ wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAH39Okv49rQuiGdi_MuK5Ia/python
 sudo apt install -y ./python-electrum.deb
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAUxsVVTi662ua4gDtCcwHZa/electrum.deb?raw=1 -O electrum.deb
 sudo apt install -y ./electrum.deb
-echo "Install Discord"
-wget https://discordapp.com/api/download?platform=linux&format=deb -O discord.deb
-sudo apt install -y ./discord.deb
 echo "Install Slack"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAzLx3p3upL3r7Qpt3icw2xa/slack.deb?raw=1 -O slack.deb
 sudo apt install -y ./slack.deb
@@ -184,8 +177,6 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle','terminate:ctrl_alt_bksp']"
 
-sudo sh -c 'echo "steam" >> /etc/wingpanel.d/ayatana.blacklist'
-
 sudo sh -c 'echo "/dev/sdb1			/media					ext4	defaults		0	0" >> /etc/fstab'
 sudo sh -c 'echo "tmpfs				/tmp					tmpfs	rw,nosuid,nodev		0	0" >> /etc/fstab'
 
@@ -194,15 +185,11 @@ ln -s /media/Downloads ~/Downloads
 ln -s /media/Videos ~/Videos
 ln -s /media/Dropbox/Music ~/Music
 ln -s /media/Dropbox/Stuff ~/Stuff
-ln -s /media/.dropbox ~/.dropbox
 ln -s /media/.Trash-1000 ~/.Trash
 
 sudo chown djaler:djaler -R /media
 sudo chown djaler:djaler -R /opt
 
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
-
-sudo sed -i 's/quiet splash//g' /etc/default/grub
-sudo update-grub
 
 sudo reboot
