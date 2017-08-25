@@ -10,12 +10,8 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-echo "Add repository for elementary Tweaks"
-sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 echo "Add repository for Nvidia driver"
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
-echo "Add repository for Chromium ***"
-sudo add-apt-repository -y ppa:canonical-chromium-builds/stage
 echo "Add repository for Quodlibet"
 sudo add-apt-repository -y ppa:lazka/ppa
 echo "Add repository for Timeshift"
@@ -33,8 +29,6 @@ sudo apt update
 echo
 
 echo "*** Install packages ***"
-echo "Install elementary Tweaks"
-sudo apt-get install -y elementary-tweaks
 echo "Install elementary new Sound Plug"
 sudo apt-get install -y switchboard-plug-sound
 echo "Install Nvidia driver"
@@ -78,6 +72,9 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server
 echo "Install Virtualenv"
 sudo apt-get install -y virtualenv
+echo "Install Sass compiler"
+sudo apt-get install -y ruby ruby-dev
+sudo gem install sass
 echo "Install Python Libraries"
 sudo apt-get install -y python3-dev
 echo "Install ppa-purge"
@@ -109,6 +106,9 @@ sudo apt install -y ./electrum.deb
 echo "Install Slack"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAzLx3p3upL3r7Qpt3icw2xa/slack.deb?raw=1 -O slack.deb
 sudo apt install -y ./slack.deb
+echo "Install Insomnia"
+wget https://builds.insomnia.rest/downloads/ubuntu/latest -O insomnia.deb
+sudo apt install -y ./insomnia.deb
 echo "Install Dropbox"
 git clone https://github.com/zant95/elementary-dropbox
 bash elementary-dropbox/install.sh -n
@@ -157,7 +157,7 @@ sudo sh -c 'echo "[Contractor Entry]" > /usr/share/contractor/folder-openasroot.
 sudo sh -c 'echo "Name=Открыть от имени суперпользователя" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "Icon=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "MimeType=inode;" >> /usr/share/contractor/folder-openasroot.contract'
-sudo sh -c 'echo "Exec=sh -c \"pkexec pantheon-files %U\"" >> /usr/share/contractor/folder-openasroot.contract'
+sudo sh -c 'echo "Exec=sh -c \"pkexec io.elementary.files %U\"" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "X-GNOME-Gettext-Domain=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 
 yadm clone https://github.com/Djaler/dotfiles.git
@@ -170,7 +170,7 @@ gsettings set apps.light-locker lock-after-screensaver 0
 gsettings set org.pantheon.desktop.wingpanel.indicators.power show-percentage true
 gsettings set org.pantheon.desktop.slingshot show-category-filter false
 gsettings set org.pantheon.terminal.settings unsafe-paste-alert false
-gsettings set org.pantheon.files.preferences single-click false
+gsettings set io.elementary.files.preferences single-click false
 gsettings set net.launchpad.screenshot folder-dir '/home/djaler'
 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
@@ -191,5 +191,9 @@ sudo chown djaler:djaler -R /media
 sudo chown djaler:djaler -R /opt
 
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
+
+sudo sh -c 'echo "10.128.0.108	phx-git-001-vs.phoenix-dnr.ru" >> /etc/hosts'
+sudo sh -c 'echo "10.128.0.150	jira.phoenix-dnr.ru" >> /etc/hosts'
+sudo sh -c 'echo "10.128.0.122	mail.phoenix-dnr.ru" >> /etc/hosts'
 
 sudo reboot
