@@ -10,6 +10,7 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
+sudo sed -i 's/appcenter/testing/g' /etc/apt/sources.list.d/appcenter.list
 echo "Add repository for Nvidia driver"
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 echo "Add repository for Quodlibet"
@@ -169,9 +170,9 @@ gsettings set apps.light-locker lock-after-screensaver 0
 
 gsettings set org.pantheon.desktop.wingpanel.indicators.power show-percentage true
 gsettings set org.pantheon.desktop.slingshot show-category-filter false
-gsettings set org.pantheon.terminal.settings unsafe-paste-alert false
+gsettings set io.elementary.terminal.settings unsafe-paste-alert false
 gsettings set io.elementary.files.preferences single-click false
-gsettings set net.launchpad.screenshot folder-dir '/home/djaler'
+gsettings set io.elementary.screenshot-tool folder-dir '/home/djaler'
 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
