@@ -10,7 +10,7 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-sudo sed -i 's/appcenter/testing/g' /etc/apt/sources.list.d/appcenter.list
+sudo sh -c "echo 'deb [arch=amd64] http://packages.elementary.io/testing xenial main' >> /etc/apt/sources.list.d/appcenter.list"
 echo "Add repository for Nvidia driver"
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 echo "Add repository for Quodlibet"
@@ -20,7 +20,8 @@ sudo add-apt-repository -y ppa:teejee2008/ppa
 echo "Add repository for Java ***"
 sudo add-apt-repository -y ppa:webupd8team/java
 echo "Add repository for Sublime Text 3"
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list'
 echo "Enable partner repository"
 sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 echo
@@ -45,7 +46,7 @@ sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-l
 sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true'
 sudo apt-get install -y oracle-java8-installer
 echo "Install Sublime Text 3"
-sudo apt-get install -y sublime-text-installer
+sudo apt-get install -y sublime-text
 echo "Install Bleachbit"
 sudo apt-get install -y bleachbit
 echo "Install Chromium"
