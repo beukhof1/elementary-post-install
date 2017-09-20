@@ -22,6 +22,11 @@ sudo add-apt-repository -y ppa:webupd8team/java
 echo "Add repository for Sublime Text 3"
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list'
+echo "Add repository for Virtualbox"
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list'
 echo "Enable partner repository"
 sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 echo
@@ -62,6 +67,8 @@ sudo apt-get install -y gnome-system-monitor
 echo "Install Hack Font"
 sudo apt-get install -y fonts-hack-ttf
 gsettings set org.gnome.desktop.interface monospace-font-name "Hack 10"
+echo "Install Virtualbox"
+sudo apt-get install -y virtualbox-5.1
 echo "Install Git"
 sudo apt-get install -y git
 echo "Install Yadm"
