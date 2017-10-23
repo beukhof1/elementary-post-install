@@ -39,7 +39,7 @@ echo "*** Install packages ***"
 echo "Install elementary new Sound Plug"
 sudo apt-get install -y switchboard-plug-sound
 echo "Install Nvidia driver"
-sudo apt-get install -y nvidia-384 nvidia-prime
+sudo apt-get install -y nvidia-387 nvidia-prime
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
 echo "Install Libre Office"
