@@ -10,7 +10,6 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-sudo sh -c "echo 'deb [arch=amd64] http://packages.elementary.io/testing xenial main' >> /etc/apt/sources.list.d/appcenter.list"
 echo "Add repository for Nvidia driver"
 sudo add-apt-repository -y ppa:graphics-drivers/ppa
 echo "Add repository for Quodlibet"
@@ -23,10 +22,11 @@ echo "Add repository for Sublime Text 3"
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list'
 echo "Add repository for Virtualbox"
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
 sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list'
+echo "Add repository for Insomnia"
+wget -qO - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
+sudo sh -c 'echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" > /etc/apt/sources.list.d/insomnia.list'
 echo "Enable partner repository"
 sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 echo
@@ -52,6 +52,8 @@ sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-l
 sudo apt-get install -y oracle-java8-installer
 echo "Install Sublime Text 3"
 sudo apt-get install -y sublime-text
+echo "Install Insomnia"
+sudo apt-get install -y insomnia
 echo "Install Bleachbit"
 sudo apt-get install -y bleachbit
 echo "Install Chromium"
@@ -115,9 +117,6 @@ sudo apt install -y ./electrum.deb
 echo "Install Slack"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAzLx3p3upL3r7Qpt3icw2xa/slack.deb?raw=1 -O slack.deb
 sudo apt install -y ./slack.deb
-echo "Install Insomnia"
-wget https://builds.insomnia.rest/downloads/ubuntu/latest -O insomnia.deb
-sudo apt install -y ./insomnia.deb
 echo "Install Dropbox"
 git clone https://github.com/zant95/elementary-dropbox
 bash elementary-dropbox/install.sh -n
@@ -201,7 +200,7 @@ sudo chown djaler:djaler -R /opt
 
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
 
-sudo sh -c 'echo "10.128.0.108	phx-git-001-vs.phoenix-dnr.ru" >> /etc/hosts'
+sudo sh -c 'echo "10.128.0.108	git.phoenix-dnr.ru" >> /etc/hosts'
 sudo sh -c 'echo "10.128.0.150	jira.phoenix-dnr.ru" >> /etc/hosts'
 sudo sh -c 'echo "10.128.0.122	mail.phoenix-dnr.ru" >> /etc/hosts'
 
