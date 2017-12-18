@@ -83,6 +83,8 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y mysql-server
 echo "Install Virtualenv"
 sudo apt-get install -y virtualenv
+echo "Install Snap"
+sudo apt-get install -y snapd
 echo "Install Sass compiler"
 sudo apt-get install -y ruby ruby-dev
 sudo gem install sass
@@ -120,6 +122,10 @@ sudo apt install -y ./slack.deb
 echo "Install Dropbox"
 git clone https://github.com/zant95/elementary-dropbox
 bash elementary-dropbox/install.sh -n
+echo "Install Intellij Idea"
+sudo snap install intellij-idea-ultimate --classic
+echo "Install PyCharm"
+sudo snap install pycharm-professional --classic
 echo
 
 echo "*** Uninstall packages ***"
