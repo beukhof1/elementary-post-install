@@ -81,8 +81,6 @@ echo "Install Mysql"
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 sudo apt-get install -y mysql-server
-echo "Install Virtualenv"
-sudo apt-get install -y virtualenv
 echo "Install Snap"
 sudo apt-get install -y snapd
 echo "Install Sass compiler"
@@ -90,6 +88,11 @@ sudo apt-get install -y ruby ruby-dev
 sudo gem install sass
 echo "Install Python Libraries"
 sudo apt-get install -y python3-dev
+echo "Install Pipenv"
+sudo apt-get install pytnon3-pip
+sudo pip3 install pipenv
+echo "Install Pyenv"
+curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
 echo "Install unrar"
