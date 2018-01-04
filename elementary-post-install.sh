@@ -92,6 +92,7 @@ echo "Install Pipenv"
 sudo apt-get install pytnon3-pip
 sudo pip3 install pipenv
 echo "Install Pyenv"
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
