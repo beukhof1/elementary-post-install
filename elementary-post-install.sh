@@ -56,8 +56,9 @@ echo "Install Insomnia"
 sudo apt-get install -y insomnia
 echo "Install Bleachbit"
 sudo apt-get install -y bleachbit
-echo "Install Chromium"
-sudo apt-get install -y chromium-browser
+echo "Install Chrome"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome.deb
+sudo apt install -y ./google-chrome.deb
 echo "Install Puddletag"
 sudo apt-get install -y puddletag
 echo "Install Deluge"
