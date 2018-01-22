@@ -116,9 +116,6 @@ wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAH39Okv49rQuiGdi_MuK5Ia/python
 sudo apt install -y ./python-electrum.deb
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAUxsVVTi662ua4gDtCcwHZa/electrum.deb?raw=1 -O electrum.deb
 sudo apt install -y ./electrum.deb
-echo "Install Slack"
-wget https://www.dropbox.com/sh/k7572lqytnw2iry/AAAzLx3p3upL3r7Qpt3icw2xa/slack.deb?raw=1 -O slack.deb
-sudo apt install -y ./slack.deb
 echo "Install Dropbox"
 git clone https://github.com/zant95/elementary-dropbox
 bash elementary-dropbox/install.sh -n
@@ -126,6 +123,8 @@ echo "Install Intellij Idea"
 sudo snap install intellij-idea-ultimate --classic
 echo "Install PyCharm"
 sudo snap install pycharm-professional --classic
+echo "Install Slack"
+sudo snap install slack --classic
 echo
 
 echo "*** Uninstall packages ***"
