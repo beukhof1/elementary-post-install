@@ -33,17 +33,13 @@ sudo apt update
 echo
 
 echo "*** Install packages ***"
-echo "Install elementary new Sound Plug"
-sudo apt-get install -y switchboard-plug-sound
 echo "Install Nvidia driver"
-sudo apt-get install -y nvidia-387 nvidia-prime
+sudo apt-get install -y nvidia-390 nvidia-prime
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
-echo "Install Libre Office"
-sudo apt-get install -y libreoffice-writer libreoffice-calc libreoffice-gtk libreoffice-l10n-ru libreoffice-style-sifr
 echo "Install Timeshift"
 sudo apt-get install -y timeshift
-echo "Install Java"
+echo "Install Java 8"
 sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 select true'
 sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true'
 sudo apt-get install -y oracle-java8-installer
@@ -73,15 +69,8 @@ echo "Install Yadm"
 sudo apt-get install -y yadm
 echo "Install Adb and Fastboot"
 sudo apt-get install -y adb fastboot
-echo "Install Mysql"
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-sudo apt-get install -y mysql-server
 echo "Install Snap"
 sudo apt-get install -y snapd
-echo "Install Sass compiler"
-sudo apt-get install -y ruby ruby-dev
-sudo gem install sass
 echo "Install Python Libraries"
 sudo apt-get install -y python3-dev
 echo "Install Pipenv"
@@ -135,7 +124,6 @@ sudo apt-get purge -y python3-apport apport-symptoms
 sudo apt-get purge -y language-pack-bg language-pack-bg-base language-pack-gnome-bg language-pack-gnome-bg-base language-pack-ca language-pack-ca-base language-pack-gnome-ca language-pack-gnome-ca-base language-pack-cs language-pack-cs-base language-pack-gnome-cs language-pack-gnome-cs-base language-pack-da language-pack-da-base language-pack-gnome-da language-pack-gnome-da-base language-pack-hu language-pack-hu-base language-pack-gnome-hu language-pack-gnome-hu-base language-pack-id language-pack-id-base language-pack-gnome-id language-pack-gnome-id-base language-pack-ja language-pack-ja-base language-pack-gnome-ja language-pack-gnome-ja-base language-pack-ko language-pack-ko-base language-pack-gnome-ko language-pack-gnome-ko-base language-pack-nb language-pack-nb-base language-pack-gnome-nb language-pack-gnome-nb-base language-pack-nl language-pack-nl-base language-pack-gnome-nl language-pack-gnome-nl-base language-pack-pl language-pack-pl-base language-pack-gnome-pl language-pack-gnome-pl-base language-pack-sv language-pack-sv-base language-pack-gnome-sv language-pack-gnome-sv-base language-pack-th language-pack-th-base language-pack-gnome-th language-pack-gnome-th-base language-pack-tr language-pack-tr-base language-pack-gnome-tr language-pack-gnome-tr-base language-pack-uk language-pack-uk-base language-pack-gnome-uk language-pack-gnome-uk-base language-pack-vi language-pack-vi-base language-pack-gnome-vi language-pack-gnome-vi-base language-pack-zh language-pack-zh-base language-pack-gnome-zh language-pack-gnome-zh-base language-pack-zh-hant language-pack-zh-hant-base language-pack-gnome-zh-hant language-pack-gnome-zh-hant-base
 sudo apt-get purge -y wbulgarian wdanish wdutch wpolish wukrainian wnorwegian wcatalan wswedish
 sudo apt-get purge -y hunspell-en-ca hunspell-en-za hunspell-en-au hunspell-en-gb
-sudo apt-get purge -y libreoffice-help-ru libreoffice-help-en-us libreoffice-help-en-gb libreoffice-l10n-en-gb libreoffice-l10n-en-za mythes-en-au
 sudo apt-get purge -y mpv
 sudo apt-get purge -y fonts-noto-cjk
 sudo apt-get purge -y brltty
