@@ -16,8 +16,10 @@ echo "Add repository for Quodlibet"
 sudo add-apt-repository -y ppa:lazka/ppa
 echo "Add repository for Timeshift"
 sudo add-apt-repository -y ppa:teejee2008/ppa
-echo "Add repository for Java ***"
+echo "Add repository for Java"
 sudo add-apt-repository -y ppa:webupd8team/java
+echo "Add repository for Bomi"
+sudo add-apt-repository -y ppa:nemonein/tailored
 echo "Add repository for Sublime Text 3"
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list'
@@ -60,6 +62,8 @@ echo "Install Gparted"
 sudo apt-get install -y gparted
 echo "Install Gnome system monitor"
 sudo apt-get install -y gnome-system-monitor
+echo "Install Bomi"
+sudo apt-get install -y bomi
 echo "Install Hack Font"
 sudo apt-get install -y fonts-hack-ttf
 gsettings set org.gnome.desktop.interface monospace-font-name "Hack 10"
@@ -87,9 +91,6 @@ echo "Install Gksu"
 sudo apt-get install -y gksu
 echo "Install Eddy"
 sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
-echo "Install bomi"
-wget https://www.dropbox.com/sh/k7572lqytnw2iry/AABCPTkQBglJ3k7ryURWCsCBa/bomi.deb?raw=1 -O bomi.deb
-sudo apt install -y ./bomi.deb --no-install-recommends
 echo "Install custom icon theme"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AABXhrHOztoAG10khWUSQ-ASa/elementary-djaler.deb?raw=1 -O elementary-djaler.deb
 sudo apt install -y ./elementary-djaler.deb
