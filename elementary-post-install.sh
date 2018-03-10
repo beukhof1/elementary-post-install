@@ -138,11 +138,6 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 echo
 
-git clone https://github.com/png2378/telegram-icon-updater.git
-cd telegram-icon-updater
-bash setup.sh --install
-cd /tmp
-
 mkdir ~/.templates
 rm -rf ~/Documents
 rm -rf ~/Pictures
