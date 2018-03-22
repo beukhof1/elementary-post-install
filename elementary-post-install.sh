@@ -10,8 +10,6 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-echo "Add repository for Nvidia driver"
-sudo add-apt-repository -y --no-update ppa:graphics-drivers/ppa
 echo "Add repository for Quodlibet"
 sudo add-apt-repository -y --no-update ppa:lazka/ppa
 echo "Add repository for Timeshift"
@@ -37,8 +35,8 @@ sudo apt update
 echo
 
 echo "*** Install packages ***"
-echo "Install Nvidia driver"
-sudo apt-get install -y nvidia-390 nvidia-prime
+echo "Install Nvidia Prime"
+sudo apt-get install -y nvidia-prime
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
 echo "Install Timeshift"
