@@ -151,6 +151,7 @@ rm -rf ~/.local/share/epiphany
 
 sudo rm /usr/share/contractor/print.contract
 sudo rm /usr/share/contractor/gnome-bluetooth.contract
+sudo rm /usr/share/contractor/mail-attach.contract
 sudo sh -c 'echo "[Contractor Entry]" > /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "Name=Открыть от имени суперпользователя" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "Icon=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
