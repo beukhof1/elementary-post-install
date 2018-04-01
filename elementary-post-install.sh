@@ -10,6 +10,8 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
+echo "Add repository for Nvidia drivers"
+sudo add-apt-repository -y --no-update ppa:graphics-drivers/ppa
 echo "Add repository for Quodlibet"
 sudo add-apt-repository -y --no-update ppa:lazka/ppa
 echo "Add repository for Timeshift"
@@ -35,8 +37,8 @@ sudo apt update
 echo
 
 echo "*** Install packages ***"
-echo "Install Nvidia Prime"
-sudo apt-get install -y nvidia-prime
+echo "Install Nvidia drivers and Nvidia Prime"
+sudo apt-get install -y nvidia-390 nvidia-prime
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
 echo "Install Timeshift"
@@ -121,13 +123,12 @@ echo
 echo "*** Uninstall packages ***"
 sudo apt-get purge -y wingpanel-indicator-bluetooth
 sudo apt-get purge -y switchboard-plug-gcc-wacom switchboard-plug-printers switchboard-plug-sharing switchboard-plug-online-accounts switchboard-plug-parental-controls switchboard-plug-gcc-color switchboard-plug-bluetooth
-sudo apt-get purge -y capnet-assist libcodecore0 appcenter pantheon-calculator libmaya-calendar0 epiphany-browser-data libnoise-core0 simple-scan audience snap-photobooth evolution-data-server
-sudo apt-get purge -y language-pack-bg language-pack-bg-base language-pack-gnome-bg language-pack-gnome-bg-base language-pack-ca language-pack-ca-base language-pack-gnome-ca language-pack-gnome-ca-base language-pack-cs language-pack-cs-base language-pack-gnome-cs language-pack-gnome-cs-base language-pack-da language-pack-da-base language-pack-gnome-da language-pack-gnome-da-base language-pack-de language-pack-de-base language-pack-gnome-de language-pack-gnome-de-base language-pack-es language-pack-es-base language-pack-gnome-es language-pack-gnome-es-base language-pack-fr language-pack-fr-base language-pack-gnome-fr language-pack-gnome-fr-base language-pack-hu language-pack-hu-base language-pack-gnome-hu language-pack-gnome-hu-base language-pack-id language-pack-id-base language-pack-gnome-id language-pack-gnome-id-base language-pack-gnome-it language-pack-gnome-it-base language-pack-it language-pack-it-base language-pack-ja language-pack-ja-base language-pack-gnome-ja language-pack-gnome-ja-base language-pack-ko language-pack-ko-base language-pack-gnome-ko language-pack-gnome-ko-base language-pack-nb language-pack-nb-base language-pack-gnome-nb language-pack-gnome-nb-base language-pack-nl language-pack-nl-base language-pack-gnome-nl language-pack-gnome-nl-base language-pack-pl language-pack-pl-base language-pack-gnome-pl language-pack-gnome-pl-base language-pack-gnome-pt language-pack-gnome-pt-base language-pack-pt language-pack-pt-base language-pack-sv language-pack-sv-base language-pack-gnome-sv language-pack-gnome-sv-base language-pack-th language-pack-th-base language-pack-gnome-th language-pack-gnome-th-base language-pack-tr language-pack-tr-base language-pack-gnome-tr language-pack-gnome-tr-base language-pack-uk language-pack-uk-base language-pack-gnome-uk language-pack-gnome-uk-base language-pack-vi language-pack-vi-base language-pack-gnome-vi language-pack-gnome-vi-base language-pack-zh language-pack-zh-base language-pack-gnome-zh language-pack-gnome-zh-base language-pack-gnome-zh-hans language-pack-gnome-zh-hans-base language-pack-zh-hans language-pack-zh-hans-base language-pack-zh-hant language-pack-zh-hant-base language-pack-gnome-zh-hant language-pack-gnome-zh-hant-base
+sudo apt-get purge -y capnet-assist libcodecore0 appcenter pantheon-calculator libmaya-calendar0 epiphany-browser-data libnoise-core0 audience io.elementary.camera evolution-data-server
+sudo apt-get purge -y language-pack-bg language-pack-bg-base language-pack-gnome-bg language-pack-gnome-bg-base language-pack-ca language-pack-ca-base language-pack-gnome-ca language-pack-gnome-ca-base language-pack-cs language-pack-cs-base language-pack-gnome-cs language-pack-gnome-cs-base language-pack-da language-pack-da-base language-pack-gnome-da language-pack-gnome-da-base language-pack-de language-pack-de-base language-pack-gnome-de language-pack-gnome-de-base language-pack-es language-pack-es-base language-pack-gnome-es language-pack-gnome-es-base language-pack-fr language-pack-fr-base language-pack-gnome-fr language-pack-gnome-fr-base language-pack-hu language-pack-hu-base language-pack-gnome-hu language-pack-gnome-hu-base language-pack-id language-pack-id-base language-pack-gnome-id language-pack-gnome-id-base language-pack-gnome-it language-pack-gnome-it-base language-pack-it language-pack-it-base language-pack-ja language-pack-ja-base language-pack-gnome-ja language-pack-gnome-ja-base language-pack-ko language-pack-ko-base language-pack-gnome-ko language-pack-gnome-ko-base language-pack-nb language-pack-nb-base language-pack-gnome-nb language-pack-gnome-nb-base language-pack-nl language-pack-nl-base language-pack-gnome-nl language-pack-gnome-nl-base language-pack-pl language-pack-pl-base language-pack-gnome-pl language-pack-gnome-pl-base language-pack-gnome-pt language-pack-gnome-pt-base language-pack-pt language-pack-pt-base language-pack-sv language-pack-sv-base language-pack-gnome-sv language-pack-gnome-sv-base language-pack-th language-pack-th-base language-pack-gnome-th language-pack-gnome-th-base language-pack-tr language-pack-tr-base language-pack-gnome-tr language-pack-gnome-tr-base language-pack-uk language-pack-uk-base language-pack-gnome-uk language-pack-gnome-uk-base language-pack-vi language-pack-vi-base language-pack-gnome-vi language-pack-gnome-vi-base language-pack-gnome-zh-hans language-pack-gnome-zh-hans-base language-pack-zh-hans language-pack-zh-hans-base language-pack-zh-hant language-pack-zh-hant-base language-pack-gnome-zh-hant language-pack-gnome-zh-hant-base
 sudo apt-get purge -y wbulgarian wbrazilian wfrench witalian wngerman wspanish wportuguese wdanish wdutch wpolish wukrainian wnorwegian wcatalan wswedish
 sudo apt-get purge -y mpv
 sudo apt-get purge -y fonts-noto-cjk
 sudo apt-get purge -y brltty
-sudo apt-get purge -y grub-efi-amd64 grub-efi-amd64-signed grub-efi-amd64-bin grub-common grub2-common shim-signed mokutil os-prober secureboot-db shim
 sudo apt-get autoremove -y
 echo
 
@@ -159,6 +160,14 @@ sudo sh -c 'echo "MimeType=inode;" >> /usr/share/contractor/folder-openasroot.co
 sudo sh -c 'echo "Exec=sh -c \"pkexec io.elementary.files %U\"" >> /usr/share/contractor/folder-openasroot.contract'
 sudo sh -c 'echo "X-GNOME-Gettext-Domain=pantheon-files" >> /usr/share/contractor/folder-openasroot.contract'
 
+sudo chown djaler:djaler -R /media
+sudo chown djaler:djaler -R /opt
+
+echo "Download Telegram"
+wget https://tdesktop.com/linux/current?alpha=1 -O telegram.tar.xz
+tar xf telegram.tar.xz
+mv Telegram /opt/Telegram
+
 wget https://github.com/zheludkovm/LinuxJavaFixes/blob/master/build/LinuxJavaFixes-1.0.0-SNAPSHOT.jar?raw=true -O LinuxJavaFixes-1.0.0-SNAPSHOT.jar
 wget https://github.com/zheludkovm/LinuxJavaFixes/blob/master/build/javassist-3.12.1.GA.jar?raw=true -O javassist-3.12.1.GA.jar
 mkdir /opt/HotkeysFix
@@ -176,10 +185,42 @@ gsettings set io.elementary.terminal.settings unsafe-paste-alert false
 gsettings set io.elementary.files.preferences single-click false
 gsettings set io.elementary.screenshot-tool folder-dir '/home/djaler'
 
+gsettings set org.pantheon.desktop.gala.behavior overlay-action ''
+gsettings set org.pantheon.dpms standby-time 0
+
+gsettings set org.gnome.gnome-system-monitor show-whose-processes 'all'
+gsettings set org.gnome.gnome-system-monitor.proctree col-22-visible false # Total disk read
+gsettings set org.gnome.gnome-system-monitor.proctree col-23-visible false # Total disk write
+gsettings set org.gnome.gnome-system-monitor.proctree col-24-visible false # Disk read
+gsettings set org.gnome.gnome-system-monitor.proctree col-25-visible false # Disk write
+gsettings set org.gnome.gnome-system-monitor.proctree col-26-visible false # Priority
+gsettings set org.gnome.gnome-system-monitor.proctree col-14-visible true # Command line
+gsettings set org.gnome.gnome-system-monitor.proctree columns-order '[0,12,1,8,15,14]'
+gsettings set org.gnome.gnome-system-monitor.proctree sort-col 15 # Memory
+
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
+gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.6
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle','terminate:ctrl_alt_bksp']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "<Super>e"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "io.elementary.screenshot-tool -s -d 0"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "Print"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ command "io.elementary.screenshot-tool -s -d 0 -c"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "<Primary>Print"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ command "io.elementary.screenshot-tool -r -d 0"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding "<Shift>Print"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ command "io.elementary.screenshot-tool -r -d 0 -c"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding "<Primary><Shift>Print"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ command "io.elementary.screenshot-tool -w -d 0"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ binding "<Alt>Print"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/ command "io.elementary.screenshot-tool -w -d 0 -c"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/ binding "<Primary><Alt>Print"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']"
 
 sudo sh -c 'echo "/dev/sdb1			/media					ext4	defaults		0	0" >> /etc/fstab'
 sudo sh -c 'echo "tmpfs				/tmp					tmpfs	rw,nosuid,nodev		0	0" >> /etc/fstab'
@@ -191,19 +232,13 @@ ln -s /media/Dropbox/Music ~/Music
 ln -s /media/Dropbox/Stuff ~/Stuff
 ln -s /media/.Trash-1000 ~/.Trash
 
-sudo chown djaler:djaler -R /media
-sudo chown djaler:djaler -R /opt
-
 sudo sh -c 'echo "LANG=ru_RU.UTF-8" > /etc/default/locale'
 
-sed -i '/swapfile/d' ./etc/fstab
+sudo sed -i '/swapfile/d' /etc/fstab
 sudo swapoff /swapfile
 sudo rm /swapfile
 
-sudo rm -rf /boot/grub
 sudo rm -rf /boot/efi/EFI/ubuntu
-wget http://www.rodsbooks.com/refind/grub-pc_3.0-1_all.deb -O grub-pc_3.0-1_all.deb
-sudo apt install -y ./grub-pc_3.0-1_all.deb
 
 sudo sh -c 'echo "DefaultTimeoutStartSec=10s" >> /etc/systemd/system.conf'
 sudo sh -c 'echo "DefaultTimeoutStopSec=10s" >> /etc/systemd/system.conf'
