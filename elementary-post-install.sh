@@ -34,6 +34,8 @@ echo
 echo "*** Install packages ***"
 echo "Install Nvidia drivers and Nvidia Prime"
 sudo apt-get install -y nvidia-driver-390 nvidia-prime
+echo "Install Intel Microcode"
+sudo apt-get install -y intel-microcode
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
 echo "Install Timeshift"
