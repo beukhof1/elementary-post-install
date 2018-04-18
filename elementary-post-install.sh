@@ -10,8 +10,6 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-echo "Add repository for Nvidia drivers"
-sudo add-apt-repository -y --no-update ppa:graphics-drivers/ppa
 echo "Add repository for Quodlibet"
 sudo add-apt-repository -y --no-update ppa:lazka/ppa
 echo "Add repository for Timeshift"
@@ -35,7 +33,7 @@ echo
 
 echo "*** Install packages ***"
 echo "Install Nvidia drivers and Nvidia Prime"
-sudo apt-get install -y nvidia-390 nvidia-prime
+sudo apt-get install -y nvidia-driver-390 nvidia-prime
 echo "Install Quodlibet"
 sudo apt-get install -y quodlibet
 echo "Install Timeshift"
@@ -191,8 +189,9 @@ gsettings set org.gnome.gnome-system-monitor.proctree col-23-visible false # Tot
 gsettings set org.gnome.gnome-system-monitor.proctree col-24-visible false # Disk read
 gsettings set org.gnome.gnome-system-monitor.proctree col-25-visible false # Disk write
 gsettings set org.gnome.gnome-system-monitor.proctree col-26-visible false # Priority
+gsettings set org.gnome.gnome-system-monitor.proctree col-21-visible true # Owner
 gsettings set org.gnome.gnome-system-monitor.proctree col-14-visible true # Command line
-gsettings set org.gnome.gnome-system-monitor.proctree columns-order '[0,12,1,8,15,14]'
+gsettings set org.gnome.gnome-system-monitor.proctree columns-order '[0,12,1,8,15,21,14]'
 gsettings set org.gnome.gnome-system-monitor.proctree sort-col 15 # Memory
 
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
