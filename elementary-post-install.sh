@@ -16,8 +16,6 @@ echo "Add repository for Timeshift"
 sudo add-apt-repository -y --no-update ppa:teejee2008/ppa
 echo "Add repository for Java"
 sudo add-apt-repository -y --no-update ppa:webupd8team/java
-echo "Add repository for Simple Screen Recorder"
-sudo add-apt-repository -y --no-update ppa:maarten-baert/simplescreenrecorder
 echo "Add repository for Bomi"
 sudo add-apt-repository -y --no-update ppa:nemonein/tailored
 echo "Enable partner repository"
