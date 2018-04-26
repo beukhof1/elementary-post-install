@@ -20,9 +20,6 @@ echo "Add repository for Simple Screen Recorder"
 sudo add-apt-repository -y --no-update ppa:maarten-baert/simplescreenrecorder
 echo "Add repository for Bomi"
 sudo add-apt-repository -y --no-update ppa:nemonein/tailored
-#echo "Add repository for Insomnia"
-#wget -qO - https://insomnia.rest/keys/debian-public.key.asc | sudo apt-key add -
-#sudo sh -c 'echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" > /etc/apt/sources.list.d/insomnia.list'
 echo "Enable partner repository"
 sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 echo
@@ -44,8 +41,6 @@ echo "Install Java 8"
 sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 select true'
 sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true'
 sudo apt-get install -y oracle-java8-installer
-#echo "Install Insomnia"
-#sudo apt-get install -y insomnia
 echo "Install Bleachbit"
 sudo apt-get install -y bleachbit
 echo "Install rEFInd"
@@ -115,6 +110,8 @@ echo "Install Slack"
 sudo snap install slack --classic
 echo "Install Sublime Text"
 sudo snap install sublime-text --classic
+echo "Install Insomnia"
+sudo snap install insomnia
 echo
 
 echo "*** Uninstall packages ***"
