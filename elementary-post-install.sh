@@ -67,6 +67,9 @@ echo "Install Yadm"
 sudo apt-get install -y yadm
 echo "Install Adb and Fastboot"
 sudo apt-get install -y adb fastboot
+echo "Install Docker"
+sudo apt-get install -y docker.io docker-compose
+sudo gpasswd -a $USER docker
 echo "Install Snap"
 sudo apt-get install -y snapd
 echo "Install Python Libraries"
