@@ -8,8 +8,8 @@ sudo apt-get install -y software-properties-common
 echo
 
 echo "*** Add repositories ***"
-echo "Switch to daily elementary repository"
-sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
+#echo "Switch to daily elementary repository"
+#sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
 echo "Add repository for Quodlibet"
 sudo add-apt-repository -y --no-update ppa:lazka/ppa
 echo "Add repository for Timeshift"
@@ -84,13 +84,11 @@ echo "Install ppa-purge"
 sudo apt-get install -y ppa-purge
 echo "Install unrar"
 sudo apt-get install -y unrar
-echo "Install Gksu"
-sudo apt-get install -y gksu
 echo "Install Zsh"
 sudo apt-get install -y zsh
 sudo -S chsh -s '/bin/zsh' "${USER}"
-echo "Install Eddy"
-sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
+#echo "Install Eddy"
+#sudo apt-get install -y com.github.donadigo.eddy --no-install-recommends
 echo "Install custom icon theme"
 wget https://www.dropbox.com/sh/k7572lqytnw2iry/AABXhrHOztoAG10khWUSQ-ASa/elementary-djaler.deb?raw=1 -O elementary-djaler.deb
 sudo apt install -y ./elementary-djaler.deb
@@ -117,7 +115,7 @@ echo
 
 echo "*** Uninstall packages ***"
 sudo apt-get purge -y wingpanel-indicator-bluetooth
-sudo apt-get purge -y switchboard-plug-gcc-wacom switchboard-plug-printers switchboard-plug-sharing switchboard-plug-online-accounts switchboard-plug-parental-controls switchboard-plug-gcc-color switchboard-plug-bluetooth
+sudo apt-get purge -y switchboard-plug-printers switchboard-plug-sharing switchboard-plug-online-accounts switchboard-plug-parental-controls switchboard-plug-bluetooth
 sudo apt-get purge -y capnet-assist libcodecore0 appcenter pantheon-calculator libmaya-calendar0 epiphany-browser-data libnoise-core0 audience io.elementary.camera evolution-data-server
 sudo apt-get purge -y language-pack-bg language-pack-bg-base language-pack-gnome-bg language-pack-gnome-bg-base language-pack-ca language-pack-ca-base language-pack-gnome-ca language-pack-gnome-ca-base language-pack-cs language-pack-cs-base language-pack-gnome-cs language-pack-gnome-cs-base language-pack-da language-pack-da-base language-pack-gnome-da language-pack-gnome-da-base language-pack-de language-pack-de-base language-pack-gnome-de language-pack-gnome-de-base language-pack-es language-pack-es-base language-pack-gnome-es language-pack-gnome-es-base language-pack-fr language-pack-fr-base language-pack-gnome-fr language-pack-gnome-fr-base language-pack-hu language-pack-hu-base language-pack-gnome-hu language-pack-gnome-hu-base language-pack-id language-pack-id-base language-pack-gnome-id language-pack-gnome-id-base language-pack-gnome-it language-pack-gnome-it-base language-pack-it language-pack-it-base language-pack-ja language-pack-ja-base language-pack-gnome-ja language-pack-gnome-ja-base language-pack-ko language-pack-ko-base language-pack-gnome-ko language-pack-gnome-ko-base language-pack-nb language-pack-nb-base language-pack-gnome-nb language-pack-gnome-nb-base language-pack-nl language-pack-nl-base language-pack-gnome-nl language-pack-gnome-nl-base language-pack-pl language-pack-pl-base language-pack-gnome-pl language-pack-gnome-pl-base language-pack-gnome-pt language-pack-gnome-pt-base language-pack-pt language-pack-pt-base language-pack-sv language-pack-sv-base language-pack-gnome-sv language-pack-gnome-sv-base language-pack-th language-pack-th-base language-pack-gnome-th language-pack-gnome-th-base language-pack-tr language-pack-tr-base language-pack-gnome-tr language-pack-gnome-tr-base language-pack-uk language-pack-uk-base language-pack-gnome-uk language-pack-gnome-uk-base language-pack-vi language-pack-vi-base language-pack-gnome-vi language-pack-gnome-vi-base language-pack-gnome-zh-hans language-pack-gnome-zh-hans-base language-pack-zh-hans language-pack-zh-hans-base language-pack-zh-hant language-pack-zh-hant-base language-pack-gnome-zh-hant language-pack-gnome-zh-hant-base
 sudo apt-get purge -y wbulgarian wbrazilian wfrench witalian wngerman wspanish wportuguese wdanish wdutch wpolish wukrainian wnorwegian wcatalan wswedish
@@ -145,7 +143,6 @@ rm -rf ~/.config/epiphany
 rm -rf ~/.local/share/io.elementary.code/
 rm -rf ~/.local/share/epiphany
 
-sudo rm /usr/share/contractor/print.contract
 sudo rm /usr/share/contractor/gnome-bluetooth.contract
 sudo rm /usr/share/contractor/mail-attach.contract
 sudo sh -c 'echo "[Contractor Entry]" > /usr/share/contractor/folder-openasroot.contract'
@@ -181,7 +178,7 @@ gsettings set io.elementary.files.preferences single-click false
 gsettings set io.elementary.screenshot-tool folder-dir '/home/djaler'
 
 gsettings set org.pantheon.desktop.gala.behavior overlay-action ''
-gsettings set org.pantheon.dpms standby-time 0
+gsettings set io.elementary.dpms standby-time 0
 
 gsettings set org.gnome.gnome-system-monitor show-whose-processes 'all'
 gsettings set org.gnome.gnome-system-monitor.proctree col-22-visible false # Total disk read
@@ -199,9 +196,17 @@ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
+gsettings set org.gnome.desktop.peripherals.touchpad click-method 'default'
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.6
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle','terminate:ctrl_alt_bksp']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "<Super>e"
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot ''
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip ''
+gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-clip ''
+gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip ''
+gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot ''
+gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot ''
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "io.elementary.screenshot-tool -s -d 0"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "Print"
