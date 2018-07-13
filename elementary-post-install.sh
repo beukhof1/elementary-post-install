@@ -186,12 +186,18 @@ gsettings set org.gnome.gnome-system-monitor.proctree sort-col 15 # Memory
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 5000
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click false
 gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false
 gsettings set org.gnome.desktop.peripherals.touchpad click-method 'default'
 gsettings set org.gnome.desktop.peripherals.mouse speed -0.6
+
+gsettings set org.gnome.desktop.privacy remove-old-temp-files true
+gsettings set org.gnome.desktop.privacy remove-old-trash-files true
+
 gsettings set org.gnome.desktop.input-sources xkb-options "['grp:alt_shift_toggle','terminate:ctrl_alt_bksp']"
+
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "<Super>e"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot ''
@@ -200,6 +206,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys window-screenshot-cli
 gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip ''
 gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot ''
 gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot ''
+
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "io.elementary.screenshot-tool -s -d 0"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "Print"
