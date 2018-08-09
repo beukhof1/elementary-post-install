@@ -46,6 +46,8 @@ echo "Install Puddletag"
 sudo apt-get install -y puddletag
 echo "Install Deluge"
 sudo apt-get install -y deluge
+echo "Install Calibre"
+sudo apt-get install -y calibre
 echo "Install Gparted"
 sudo apt-get install -y gparted
 echo "Install Gnome system monitor"
@@ -164,6 +166,8 @@ yadm remote set-url origin git@github.com:Djaler/dotfiles.git
 
 gsettings set apps.light-locker lock-on-suspend false
 gsettings set apps.light-locker lock-after-screensaver 0
+
+gsettings set io.elementary.desktop.wingpanel.datetime clock-format '24h'
 
 gsettings set io.elementary.terminal.settings unsafe-paste-alert false
 gsettings set io.elementary.files.preferences single-click false
