@@ -10,8 +10,6 @@ echo
 echo "*** Add repositories ***"
 echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
-echo "Add repository for Quodlibet"
-sudo add-apt-repository -y --no-update ppa:lazka/ppa
 echo "Add repository for Timeshift"
 sudo add-apt-repository -y --no-update ppa:teejee2008/ppa
 echo "Add repository for Java"
@@ -27,8 +25,6 @@ sudo apt update
 echo
 
 echo "*** Install packages ***"
-echo "Install Quodlibet"
-sudo apt-get install -y quodlibet
 echo "Install Timeshift"
 sudo apt-get install -y timeshift
 echo "Install Java 8"
@@ -237,7 +233,6 @@ sudo sh -c 'echo "tmpfs				/tmp					tmpfs	rw,nosuid,nodev		0	0" >> /etc/fstab'
 ln -s /media/Dropbox ~/Dropbox
 ln -s /media/Downloads ~/Downloads
 ln -s /media/Videos ~/Videos
-ln -s /media/Dropbox/Music ~/Music
 ln -s /media/Dropbox/Stuff ~/Stuff
 ln -s /media/.Trash-1000 ~/.Trash
 
