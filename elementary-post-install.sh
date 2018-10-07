@@ -227,6 +227,40 @@ sudo sh -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.co
 sudo sh -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
 sudo update-initramfs -u
 
+sudo sh -c "cat > /etc/timeshift.json" << EOL
+{
+  "backup_device_uuid" : "",
+  "parent_device_uuid" : "",
+  "do_first_run" : "true",
+  "btrfs_mode" : "false",
+  "include_btrfs_home" : "false",
+  "stop_cron_emails" : "true",
+  "schedule_monthly" : "true",
+  "schedule_weekly" : "true",
+  "schedule_daily" : "true",
+  "schedule_hourly" : "false",
+  "schedule_boot" : "false",
+  "count_monthly" : "2",
+  "count_weekly" : "2",
+  "count_daily" : "2",
+  "count_hourly" : "6",
+  "count_boot" : "5",
+  "snapshot_size" : "0",
+  "snapshot_count" : "0",
+  "exclude" : [
+    "/home/djaler/.config/deluge/state/***",
+    "/home/djaler/.dropbox/***",
+    "+ /home/djaler/.gradle/gradle.properties",
+    "/home/djaler/.gradle/**",
+    "/home/djaler/.npm/***",
+    "+ /home/djaler/.**",
+    "+ /root/.**"
+  ],
+  "exclude-apps" : [
+  ]
+}
+EOL
+
 sudo sh -c 'echo "/dev/sdb1			/media					ext4	defaults		0	0" >> /etc/fstab'
 sudo sh -c 'echo "tmpfs				/tmp					tmpfs	rw,nosuid,nodev		0	0" >> /etc/fstab'
 
