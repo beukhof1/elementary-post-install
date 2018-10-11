@@ -12,6 +12,8 @@ echo "Switch to daily elementary repository"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
 echo "Add repository for Timeshift"
 sudo add-apt-repository -y --no-update ppa:teejee2008/ppa
+echo "Add repository for rEFInd"
+sudo apt-add-repository -y --no-update ppa:rodsmith/refind
 echo "Add repository for Java"
 sudo add-apt-repository -y --no-update ppa:webupd8team/java
 echo "Add repository for Bomi"
