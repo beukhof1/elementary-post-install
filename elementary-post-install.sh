@@ -27,6 +27,8 @@ sudo apt update
 echo
 
 echo "*** Install packages ***"
+echo "Install Nvidia Drivers"
+sudo apt-get install -y nvidia-driver-390
 echo "Install Timeshift"
 sudo apt-get install -y timeshift
 echo "Install Java 8"
@@ -40,8 +42,6 @@ sudo apt-get install -y refind
 echo "Install Chrome"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome.deb
 sudo apt install -y ./google-chrome.deb
-echo "Install Puddletag"
-sudo apt-get install -y puddletag
 echo "Install Deluge"
 sudo apt-get install -y deluge
 echo "Install Calibre"
@@ -148,7 +148,7 @@ sudo chown djaler:djaler -R /media
 sudo chown djaler:djaler -R /opt
 
 echo "Download Telegram"
-wget https://tdesktop.com/linux/current?alpha=1 -O telegram.tar.xz
+wget https://tdesktop.com/linux/current -O telegram.tar.xz
 tar xf telegram.tar.xz
 mv Telegram /opt/Telegram
 
@@ -224,10 +224,6 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/ binding "<Primary><Alt>Print"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/','/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']"
-
-sudo sh -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-sudo sh -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-sudo update-initramfs -u
 
 sudo sh -c "cat > /etc/timeshift.json" << EOL
 {
