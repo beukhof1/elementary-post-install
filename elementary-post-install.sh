@@ -27,10 +27,6 @@ echo "Install Nvidia Drivers"
 sudo apt-get install -y nvidia-driver-390
 echo "Install Timeshift"
 sudo apt-get install -y timeshift
-echo "Install Java 8"
-sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 select true'
-sudo debconf-set-selections <<< 'oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true'
-sudo apt-get install -y oracle-java8-installer
 echo "Install Node & Npm"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 sudo apt-get install -y nodejs
