@@ -2,81 +2,117 @@ clear
 
 cd /tmp
 
-echo "*** Enable add-apt-repository ***"
+echo -e "\e[34mWelcome back commander"
+echo -e "\e[92mStarting superscript"
+echo -e "\e[91mMade with ♥ for \e[1mElementaryOS 5.0"
+
+echo "★彡 Enable add-apt-repository 彡★"
 sudo apt update
-sudo apt-get install -y software-properties-common
+sudo apt install -y software-properties-common
 echo
 
-echo "*** Add repositories ***"
-echo "Switch to daily elementary repository"
+echo "★彡 Add repo's 彡★"
+echo "Switch to daily elementary repo"
 sudo sed -i 's/stable/daily/g' /etc/apt/sources.list.d/elementary.list
 echo "Add repository for Timeshift"
 sudo add-apt-repository -y --no-update ppa:teejee2008/ppa
+echo "Add repository for Elementary-tweaks"
+sudo add-apt-repository -y --no-update ppa:philip.scott/elementary-tweaks
+echo "Add repository for Gamehub"
+sudo add-apt-repository -y --no-update ppa:tkashkin/gamehub
+echo "Add repository for tlp"
+sudo add-apt-repository -y --no-update ppa:linrunner/tlp
 echo "Add repository for Java"
 sudo add-apt-repository -y --no-update ppa:webupd8team/java
 echo "Enable partner repository"
 sudo sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 echo
 
-echo "*** Update repositories ***"
+echo "★彡 Update repo's 彡★"
 sudo apt update
 echo
 
-echo "*** Install packages ***"
+echo "★彡 Install packages 彡★"
+
+echo "Install git"
+sudo apt install -y git
 echo "Install Nvidia Drivers"
-sudo apt-get install -y nvidia-driver-390
+sudo apt install -y nvidia-driver-390
 echo "Install Timeshift"
-sudo apt-get install -y timeshift
+sudo apt install -y timeshift
 echo "Install Node & Npm"
 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
 echo "Install Bleachbit"
-sudo apt-get install -y bleachbit
-echo "Install Chrome"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O google-chrome.deb
+sudo apt install -y bleachbit
+echo "Install Chrome (beta)"
+wget https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb -O google-chrome.deb
 sudo apt install -y ./google-chrome.deb
 echo "Install Deluge"
-sudo apt-get install -y deluge
+sudo apt install -y deluge
 echo "Install Gparted"
-sudo apt-get install -y gparted
+sudo apt install -y gparted
 echo "Install Gnome system monitor"
-sudo apt-get install -y gnome-system-monitor
+sudo apt install -y gnome-system-monitor
 echo "Install Simple Screen Recorder"
-sudo apt-get install -y simplescreenrecorder
+sudo apt install -y simplescreenrecorder
 echo "Install Hack Font"
-sudo apt-get install -y fonts-hack-ttf
+sudo apt install -y fonts-hack-ttf
 gsettings set org.gnome.desktop.interface monospace-font-name "Hack 10"
 echo "Install Git"
-sudo apt-get install -y git
+sudo apt install -y git
 echo "Install Adb and Fastboot"
-sudo apt-get install -y adb fastboot
+sudo apt install -y adb fastboot
 echo "Install Snap"
-sudo apt-get install -y snapd
+sudo apt install -y snapd
 echo "Install Python Libraries"
-sudo apt-get install -y python3-dev
+sudo apt install -y python3-dev
 echo "Install Pipenv"
-sudo apt-get install -y python3-pip
+sudo apt install -y python3-pip
 sudo pip3 install pipenv
+echo "Install python3-setuptools"
+sudo apt install -y python3-setuptools
 echo "Install ppa-purge"
-sudo apt-get install -y ppa-purge
+sudo apt install -y ppa-purge
 echo "Install unrar"
-sudo apt-get install -y unrar
+sudo apt install -y unrar
 echo "Install Zsh"
-sudo apt-get install -y zsh
+sudo apt install -y zsh
 sudo -S chsh -s '/bin/zsh' "${USER}"
 echo "Install Eddy"
-sudo apt-get install -y com.github.donadigo.eddy
-echo "Install Slack"
-sudo snap install slack --classic
+sudo apt install -y com.github.donadigo.eddy
 echo "Install Sublime Text"
 sudo snap install sublime-text --classic
 echo "Install Insomnia"
 sudo snap install insomnia
+echo "Install elementary-x Theme"
+sudo git clone https://github.com/surajmandalcell/elementary-x.git /usr/share/themes/elementary-x
+echo "Install Solaar"
+sudo apt install -y solaar
+echo "Install TheFuck"
+sudo pip3 install thefuck
+echo "Install ninja-build"
+sudo apt install ninja-build
+echo "Install elementary-tweaks"
+sudo apt install elementary-tweaks
+echo "Install gamehub"
+sudo apt install com.github.tkashkin.gamehub
+echo "Install tlp"
+sudo apt-get install tlp tlp-rdw
+echo "Install npm"
+sudo apt-get install npm
+echo "Install s-tui"
+sudo pip3 install s-tui
+echo "Install undervolt"
+sudo pip3 install undervolt
+echo "Install dry"
+curl -sSf https://moncho.github.io/dry/dryup.sh | sudo sh
+sudo chmod 755 /usr/local/bin/dry
 echo
 
-echo "*** Upgrade packages ***"
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
+echo "★彡 Upgrade packages 彡★"
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
 echo
 
 mkdir ~/.templates
@@ -124,8 +160,6 @@ ln -s /media/.Trash-1000 ~/.Trash
 sudo sed -i '/swapfile/d' /etc/fstab
 sudo swapoff /swapfile
 sudo rm /swapfile
-
-sudo rm -rf /boot/efi/EFI/ubuntu
 
 sudo sh -c 'echo "DefaultTimeoutStartSec=10s" >> /etc/systemd/system.conf'
 sudo sh -c 'echo "DefaultTimeoutStopSec=10s" >> /etc/systemd/system.conf'
