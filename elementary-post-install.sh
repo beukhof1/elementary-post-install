@@ -1,9 +1,11 @@
 clear
 
+if [[ $(id -u) -ne 0 ]] ; then echo "Please run as root" ; exit 1 ; fi
+
 cd /tmp
 
 echo -e "\e[34mWelcome back commander"
-echo -e "\e[92mStarting superscript"
+echo -e "\e[92mStarting script now"
 echo -e "\e[91mMade with ♥ for \e[1mElementaryOS 5.0"
 
 echo "★彡 Enable add-apt-repository 彡★"
@@ -36,8 +38,8 @@ echo "★彡 Install packages 彡★"
 
 echo "Install git"
 sudo apt install -y git
-echo "Install Nvidia Drivers"
-sudo apt install -y nvidia-driver-390
+#echo "Install Nvidia Drivers"
+#sudo apt install -y nvidia-driver-390
 echo "Install Timeshift"
 sudo apt install -y timeshift
 echo "Install Node & Npm"
@@ -48,8 +50,6 @@ sudo apt install -y bleachbit
 echo "Install Chrome (beta)"
 wget https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb -O google-chrome.deb
 sudo apt install -y ./google-chrome.deb
-echo "Install Deluge"
-sudo apt install -y deluge
 echo "Install Gparted"
 sudo apt install -y gparted
 echo "Install Gnome system monitor"
@@ -164,4 +164,13 @@ sudo rm /swapfile
 sudo sh -c 'echo "DefaultTimeoutStartSec=10s" >> /etc/systemd/system.conf'
 sudo sh -c 'echo "DefaultTimeoutStopSec=10s" >> /etc/systemd/system.conf'
 
-sudo reboot
+sleep 5
+
+clear
+
+echo -e "\e[91m!WARNING Auto reboot in 60 seconds!"
+echo -e "\e[91m!WARNING Auto reboot in 60 seconds!"
+echo -e "\e[91m!WARNING Auto reboot in 60 seconds!"
+
+sleep 60
+
