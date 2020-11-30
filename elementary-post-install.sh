@@ -43,12 +43,12 @@ sudo apt install -y git
 echo "Install Timeshift"
 sudo apt install -y timeshift
 echo "Install Node & Npm"
-curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
-sudo apt install -y nodejs
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt-get install -y nodejs
 echo "Install Bleachbit"
 sudo apt install -y bleachbit
-echo "Install Chrome (beta)"
-wget https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb -O google-chrome.deb
+echo "Install Chrome"
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install -y ./google-chrome.deb
 echo "Install Gparted"
 sudo apt install -y gparted
